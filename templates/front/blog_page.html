@@ -1,0 +1,82 @@
+{% extends 'front/base.html' %}
+{% load static %}
+{% block content %}
+<div class="wrapper">
+    <div class="parallax filter-black">
+        <div class="parallax-image">
+            <img src="{% static 'front/img/thumb.jpg' %}" alt="..." />
+        </div>
+        <div class="small-info">
+            <h1>Sampoerna News</h1>
+            <h3></h3>
+        </div>
+    </div>
+
+     <div class="social-line social-line-black">
+         <div class="container">
+            <div class="row">
+                 <div class="col-md-2 col-md-offset-2">
+                     <a href="" class="btn btn-simple btn-social btn-neutral">
+                         <i class="fa fa-facebook-square"></i> Share &middot; 753
+                     </a>
+                 </div>
+                  <div class="col-md-2">
+                     <a href="" class="btn btn-simple btn-social btn-neutral">
+                         <i class="fa fa-twitter"></i> Tweet &middot; 832
+                     </a>
+                 </div>
+                  <div class="col-md-2">
+                     <a href="" class="btn btn-simple btn-social btn-neutral">
+                         <i class="fa fa-google-plus-square"></i> Post &middot; 131
+                     </a>
+                 </div>
+                 <div class="col-md-2">
+                     <a href="" class="btn btn-simple btn-social btn-neutral">
+                         <i class="fa fa-pinterest"></i> Pin it &middot; 323
+                     </a>
+                 </div>
+            </div>
+         </div>
+     </div>
+
+    <div class="section">
+           <div class="container">
+               <h2 class="section-title">Berita Harini</h2>
+               <div class="row">
+                {% for a in artikel %}
+                    <div class="col-md-4">
+                        <div class="card card-plain">
+                            <div class="image">
+                                <img src="{{a.image}}" alt="..." />
+                                <div class="filter filter-white">
+                                    <a href={{a.link}}type="button" class="btn btn-info btn-round btn-fill">
+                                        <i class="fa fa-heart"></i> Read More
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p class="category">News</p>
+                                <a class="card-link" href="{{a.link}}">
+                                    <h4 class="title">{{a.description}}</h4>
+                                </a>
+                                 <div class="footer">
+                                    <div class="author">
+                                        <a class="card-link" href="#">
+                                           <img src="{% static 'front/img/default-avatar.png' %}" alt="..." class="avatar">
+                                           <span> {{a.author}} </span>
+                                        </a>
+                                    </div>
+                                    <div class="stats pull-right">
+                                        <i class="fa fa-clock-o"></i> {{a.isodate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                    {% endfor %}
+               </div>
+           </div>
+    </div><!-- section -->
+
+</div> <!-- wrapper -->
+{% endblock content %}

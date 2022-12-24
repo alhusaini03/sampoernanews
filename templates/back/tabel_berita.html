@@ -1,0 +1,57 @@
+{% extends 'back/base.html' %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="toolbar">
+                            <a class ="btn btn-sm btn-danger" href="{% url 'sinkron_info' %}"> Sinkron Berita</a>&ensp;&ensp; &ensp;
+                            {% comment %} <a class ="btn btn-sm btn-danger" href="{% url 'sinkron_info' %}"> Sinkron Berita</a>&ensp;&ensp; &ensp; {% endcomment %}
+                            <!--Here you can write extra buttons/actions for the toolbar-->
+                        </div>
+                        <table id="bootstrap-table" class="table">
+                            <thead>
+                                <th data-field="state" data-checkbox="true"></th>
+                                <th data-field="id" class="text-center">No</th>
+                                <th data-field="nama" data-sortable="true">author</th>
+                                <th data-field="judul" data-sortable="true">Title</th>
+                                <th data-field="Body" data-sortable="true">description</th>
+                                <th data-field="Body" data-sortable="true">Link</th>
+                                <th data-field="Date">Content</th>
+                                <th data-field="Descripsi">Tanggal</th>
+                                <th data-field="kategori" data-sortable="true">Gambar</th>
+
+                                <th>Actions</th>
+                            </thead>
+                            <tbody>
+                                {% for a in artikel %}
+                                <tr>
+                                    <td></td>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{a.author}}</td>
+                                    <td>{{a.title}}</td>
+                                    <td>{{a.description}}</td>
+                                    <td>{{a.link}}</td>
+                                    <td>{{a.content}}</td>
+                                    <td>{{a.isodate}}</td>
+                                    <td>{{a.image}}</td>
+                                    <td>
+                                        <a class="btn btn-info text-white bi bi-search" href="#">Lihat </a>
+                                        <a oneclick="return confirm('delete artikel?');"class="btn btn-danger text-white bi bi-trash" href="#">Delete </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div><!--  end card  -->
+            </div> <!-- end col-md-12 -->
+        </div> <!-- end row -->
+    </div>
+</div>
+{% endblock content %}
